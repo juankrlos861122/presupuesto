@@ -11,6 +11,10 @@ build/
 .env
 .env.local
 .env.*.local
+apps/backend/.env
+apps/frontend/.env
+apps/frontend/environments/
+*.env.local
 
 # IDE
 .idea/
