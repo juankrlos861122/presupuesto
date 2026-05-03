@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
-const API_URL = 'http://localhost:3001';
+const API_URL = "https://presupuesto-backend-39io.onrender.com";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class ApiService {
   constructor(private http: HttpClient) {}
 
   // Auth
-  register(data: { email: string; password: string; name: string }): Observable<any> {
+  register(data: {
+    email: string;
+    password: string;
+    name: string;
+  }): Observable<any> {
     return this.http.post(`${API_URL}/auth/register`, data);
   }
 
@@ -27,7 +31,9 @@ export class ApiService {
   }
 
   getGraficos(año?: number): Observable<any> {
-    return this.http.get(`${API_URL}/dashboard/graficos`, { params: año ? { año: año.toString() } : {} });
+    return this.http.get(`${API_URL}/dashboard/graficos`, {
+      params: año ? { año: año.toString() } : {},
+    });
   }
 
   // Transacciones
@@ -75,7 +81,10 @@ export class ApiService {
     return this.http.delete(`${API_URL}/ahorros/${id}`);
   }
 
-  depositarAhorro(id: number, data: { monto: number; fecha?: string }): Observable<any> {
+  depositarAhorro(
+    id: number,
+    data: { monto: number; fecha?: string },
+  ): Observable<any> {
     return this.http.put(`${API_URL}/ahorros/${id}/depositar`, data);
   }
 
@@ -138,14 +147,17 @@ export class ApiService {
     const params: any = {};
     if (mes) params.mes = mes.toString();
     if (año) params.año = año.toString();
-    return this.http.get(`${API_URL}/export/pdf`, { params, responseType: 'blob' });
+    return this.http.get(`${API_URL}/export/pdf`, { params, responseType: "blob" });
   }
 
   exportExcel(mes?: number, año?: number): Observable<any> {
     const params: any = {};
     if (mes) params.mes = mes.toString();
     if (año) params.año = año.toString();
-    return this.http.get(`${API_URL}/export/excel`, { params, responseType: 'blob' });
+    return this.http.get(`${API_URL}/export/excel`, {
+      params,
+      responseType: "blob",
+    });
   }
 
   // Notificaciones
