@@ -1,0 +1,13 @@
+{
+  "name": "presupuesto-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
